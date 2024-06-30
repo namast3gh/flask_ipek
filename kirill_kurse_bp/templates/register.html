@@ -1,0 +1,95 @@
+{% extends 'header.html' %}
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+      {% for category, message in messages %}
+         <div class="flash-messages {{ category }}">
+             {{ message }}
+         </div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+
+<form action="" method="post" class="form-contact">
+    <p><label>Имя пользователя: </label> 
+       <input type="text" id="username" name="username" value="" minlength="3" pattern="[A-Za-z0-9_]{3,}" required />
+       <small class="field-description">Минимум 3 символа, только буквы латинского алфавита, цифры и символы подчеркивания.</small>
+    </p>
+    <p><label>Email: </label> 
+       <input type="email" id="email" name="email" value="" minlength="5" required />
+       <small class="field-description">Минимум 5 символов, должен соответствовать формату электронной почты.</small>
+    </p>
+    <p><label>Пароль: </label> 
+		<input type="password" id="password" name="password" value="" minlength="6" pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[\.,])(?=.*[A-Z]).{6,}" required />
+       <small class="field-description">Минимум 6 символов, включая цифры, буквы латинского алфавита, хотя бы одну точку или запятую и одну заглавную букву.</small>
+    </p>
+	<p><label>Подтвердите пароль: </label> 
+		<input type="password" id="confirm_password" name="confirm_password" value="" minlength="6" required />
+		<small class="field-description">Введите пароль еще раз для подтверждения.</small>
+	</p>
+	
+    <p><input type="checkbox" name="terms_agreement" required /> Я согласен с условиями <a href="{{ url_for('terms') }}">пользовательского соглашения</a></p>
+    <p><input type="submit" value="Регистрация"/></p>
+</form>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		var form = document.querySelector(".form-contact");
+		var usernameInput = document.getElementById("username");
+		var emailInput = document.getElementById("email");
+		var passwordInput = document.getElementById("password");
+	
+		// Проверка на пустые поля
+		usernameInput.addEventListener("blur", function() {
+			if (!this.value.trim()) {
+				this.setCustomValidity("Введите свое имя пользователя.");
+			} else {
+				this.setCustomValidity("");
+			}
+		});
+	
+		emailInput.addEventListener("blur", function() {
+			if (!this.value.trim()) {
+				this.setCustomValidity("Введите свой email.");
+			} else {
+				this.setCustomValidity("");
+			}
+		});
+	
+		passwordInput.addEventListener("blur", function() {
+			if (!this.value.trim()) {
+				this.setCustomValidity("Введите свой пароль.");
+			} else {
+				this.setCustomValidity("");
+			}
+		});
+	
+		// Проверка на минимальное количество символов
+		usernameInput.addEventListener("input", function() {
+			if (this.validity.typeMismatch || this.value.length < 5) {
+				this.setCustomValidity("Имя пользователя должно содержать минимум 5 символов.");
+			} else {
+				this.setCustomValidity("");
+			}
+		});
+	
+		emailInput.addEventListener("input", function() {
+			if (this.validity.typeMismatch || this.value.length < 5) {
+				this.setCustomValidity("Email должен содержать минимум 5 символов.");
+			} else {
+				this.setCustomValidity("");
+			}
+		});
+	
+		passwordInput.addEventListener("input", function() {
+			if (this.validity.typeMismatch || this.value.length < 6) {
+				this.setCustomValidity("Пароль должен содержать минимум 6 символов.");
+			} else {
+				this.setCustomValidity("");
+			}
+		});
+	});
+	</script>
+	
+	
+{% endblock %}

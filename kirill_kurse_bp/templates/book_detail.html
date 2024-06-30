@@ -1,0 +1,61 @@
+{% extends 'header.html' %}
+
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+      {% for category, message in messages %}
+         <div class="flash-messages {{ category }}">
+             {{ message }}
+         </div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+<div class="book-detail">
+    <h2>{{ book.title }}</h2>
+    <img src="{{ book.photo }}" alt="{{ book.title }}" class="book-cover">
+    <div class="book-info">
+        <p>Автор: {{ book.author.name }}</p>
+        <p>Жанр: {{ book.genre.title }}</p>
+        <p>Дата публикации: {{ book.date }}</p>
+        <p>Цена: {{ book.price }}₽</p>
+        {% if rating is not none %}
+        <p>Рейтинг: {{ "%.2f"|format(rating) }}</p>
+        {% else %}
+        <p>Рейтинг: Нет данных</p>
+        {% endif %}
+        <p>Описание: {{ book.description }}</p>
+    </div>
+    <div class="actions">
+        <form class="cart-form" action="{{ url_for('add_to_cart', book_id=book.id) }}" method="post">
+            <input type="hidden" name="book_id" value="{{ book.id }}">
+            <button type="submit">Добавить в корзину</button>
+        </form>
+		{% if not book.id|has_rating(current_user.id) %}
+		<form action="{{ url_for('rate_book') }}" method="post">
+			<input type="hidden" name="id_book" value="{{ book.id }}">
+			{% for i in range(1, 6): %}
+			<label>
+				<input type="radio" name="rating" value="{{ i }}" required> Звезда {{ i }}
+			</label>
+			{% endfor %}
+			<button type="submit">Оценить</button>
+		</form>
+		{% endif %}
+		
+        <form action="{{ url_for('add_comment') }}" method="post">
+            <input type="hidden" name="id_book" value="{{ book.id }}">
+            <textarea name="comment_text" placeholder="Введите свой комментарий"></textarea>
+            <button type="submit">Добавить комментарий</button>
+        </form>
+    </div>
+    <div class="comments">
+        {% for comment in book.comments %}
+        <div class="comment">
+            <p><strong>{{ comment.user.username }}:</strong></p>
+            <p>{{ comment.text }}</p>
+            <small>{{ comment.date.strftime('%Y-%m-%d %H:%M') }}</small>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

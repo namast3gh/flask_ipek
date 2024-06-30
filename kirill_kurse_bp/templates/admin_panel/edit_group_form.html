@@ -1,0 +1,18 @@
+{% extends 'admin_header.html' %}
+
+{% block content %}
+<h2>Редактирование группы</h2>
+<form action="/edit_group/{{ group.id }}" method="post">
+    <label for="title">Название группы:</label>
+    <input type="text" id="title" name="title" value="{{ group.title }}" required>
+    
+    <label for="book">Выберите книгу:</label>
+    <select id="book" name="book_id">
+        {% for book in books %}
+        <option value="{{ book.id }}" {% if book.id == group.id_book %}selected{% endif %}>{{ book.title }}</option>
+        {% endfor %}
+    </select>
+    
+    <button type="submit">Сохранить изменения</button>
+</form>
+{% endblock %}

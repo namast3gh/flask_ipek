@@ -1,0 +1,25 @@
+{% extends 'header.html' %}
+
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+      {% for category, message in messages %}
+         <div class="flash-messages {{ category }}">
+             {{ message }}
+         </div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+
+<h1>Спасибо за ваш заказ!</h1>
+<p>Ваш заказ успешно принят. Мы скоро свяжемся с вами для уточнения деталей доставки.</p>
+<p>Сумма вашего заказа: {{ total_cost }}₽</p>
+<p>Ваши товары:</p>
+<ul>
+    {% for item in items %}
+        <li>{{ item.book.title }} - {{ item.book.price }}₽ x {{ item.quantity }}шт. = {{ item.book.price * item.quantity }}₽</li>
+    {% endfor %}
+</ul>
+<p>Если у вас возникнут вопросы или предложения, пожалуйста, свяжитесь с нами.</p>
+<a href="{{ url_for('index') }}">Вернуться на главную</a>
+{% endblock %}

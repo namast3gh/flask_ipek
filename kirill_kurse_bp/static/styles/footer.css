@@ -1,0 +1,47 @@
+@import 'variables.css';
+
+.site-footer {
+	margin: 0;
+    bottom: 0;
+    width: 100%;
+	color: white;
+    background-color: #000000;
+    text-align: center;
+    padding: 10px 0;
+	flex: 0 0 auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.socials,.contact-info, nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.socials li,.contact-info li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.socials a, nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+   .footer-content {
+        flex-direction: column;
+    }
+
+   .socials,.contact-info, nav ul {
+        margin-bottom: 10px;
+    }
+}

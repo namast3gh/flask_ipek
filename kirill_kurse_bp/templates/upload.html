@@ -1,0 +1,18 @@
+{% extends 'header.html' %}
+
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+      {% for category, message in messages %}
+         <div class="flash-messages {{ category }}">
+             {{ message }}
+         </div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="excel_file" accept=".xlsx,.xls">
+    <button type="submit">Загрузить</button>
+</form>
+{% endblock %}
+

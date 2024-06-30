@@ -1,0 +1,61 @@
+<!-- search_results.html -->
+{% extends 'header.html' %}
+
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+      {% for category, message in messages %}
+         <div class="flash-messages {{ category }}">
+             {{ message }}
+         </div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+<div class="books-layout">
+    <h2>Результаты поиска:</h2>
+    <div class="content-wrapper">
+        {% if books %}
+        <div class="book-items">
+            {% for book in books %}
+            <div class="book-item">
+                <img src="{{ book.photo }}" alt="{{ book.title }}">
+                <h3>{{ book.title }}</h3>
+                {% if book.author %}
+                <p>Автор: {{ book.author.name }}</p>
+                {% endif %}
+                {% if book.genre %}
+                <p>Жанр: {{ book.genre.title }}</p>
+                {% endif %}
+                <p>Дата публикации: {{ book.date }}</p>
+                <p>Цена: {{ book.price }}</p>
+                <a href="/detail/{{ book.id }}" class="detail-button">Подробнее</a>
+            </div>
+            {% endfor %}
+        </div>
+        {% elif authors %}
+        <div class="book-items">
+            {% for author in authors %}
+                {% for book in author.books %}
+                <div class="book-item">
+					<img src="{{ book.photo }}" alt="{{ book.title }}">
+					<h3>{{ book.title }}</h3>
+					{% if book.author %}
+					<p>Автор: {{ book.author.name }}</p>
+					{% endif %}
+					{% if book.genre %}
+					<p>Жанр: {{ book.genre.title }}</p>
+					{% endif %}
+					<p>Дата публикации: {{ book.date }}</p>
+					<p>Цена: {{ book.price }}</p>
+					<a href="/detail/{{ book.id }}" class="detail-button">Подробнее</a>
+				</div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>Нет результатов.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

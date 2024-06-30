@@ -1,0 +1,70 @@
+{% extends 'header.html' %}
+
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+      {% for category, message in messages %}
+         <div class="flash-messages {{ category }}">
+             {{ message }}
+         </div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+
+<form method="POST" class="login-form">
+    <div class="container">
+        <label for="Email"><b>Email</b></label>
+        <input type="email" placeholder="" name="email" required>
+        <label for="Password"><b>Пароль</b></label>
+        <input type="password" placeholder="" name="password" required>
+        
+        <button type="submit">Войти</button>
+    </div>
+    <div class="footer-text">
+        <span>Еще не зарегистрированы? <a href="/register">Зарегистрируйтесь</a> прямо сейчас!</span>
+    </div>
+</form>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		var form = document.querySelector("form");
+		var emailInput = document.querySelector("input[name='email']");
+		var passwordInput = document.querySelector("input[name='password']");
+	
+		// Проверка на пустые поля
+		emailInput.addEventListener("blur", function() {
+			if (!this.value.trim()) {
+				this.setCustomValidity("Введите свой email.");
+			} else {
+				this.setCustomValidity("");
+			}
+		});
+	
+		passwordInput.addEventListener("blur", function() {
+			if (!this.value.trim()) {
+				this.setCustomValidity("Введите свой пароль.");
+			} else {
+				this.setCustomValidity("");
+			}
+		});
+	
+		// Проверка на минимальное количество символов
+		emailInput.addEventListener("input", function() {
+			if (this.validity.typeMismatch || this.value.length < 5) {
+				this.setCustomValidity("Email должен содержать минимум 5 символов.");
+			} else {
+				this.setCustomValidity("");
+			}
+		});
+	
+		passwordInput.addEventListener("input", function() {
+			if (this.validity.typeMismatch || this.value.length < 6) {
+				this.setCustomValidity("Пароль должен содержать минимум 6 символов.");
+			} else {
+				this.setCustomValidity("");
+			}
+		});
+	});
+	</script>
+	
+{% endblock %}

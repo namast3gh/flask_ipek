@@ -1,0 +1,73 @@
+{% extends 'admin_header.html' %}
+
+{% block content %}
+<h1 class="center">Список книг</h1>
+<div class="center">
+    <table class="admin_table">
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Жанр</th>
+            <th>Описание</th>
+            <th>Дата</th>
+            <th>Страниц</th>
+            <th>Цена</th>
+            <th>Фото</th>
+            <th>Автор</th>
+            <th>Действия</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.genre.title }}</td>
+            <td>{{ book.description | truncate(100) }}</td>
+            <td>{{ book.date }}</td>
+            <td>{{ book.pages }}</td>
+            <td>{{ book.price }}</td>
+            <td><img src="{{ book.photo }}" alt="Cover"></td>
+            <td>{{ book.author.name }}</td>
+            <td>
+                <button onclick="createEditForm(this)" data-id="{{ book.id }}">Редактировать</button>
+                <button onclick="deleteBook('{{ book.id }}')">Удалить</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<!-- Убедитесь, что элемент 'edit-book-form' существует в HTML -->
+<div id="edit-book-form"></div>
+<div class="center">
+	<button onclick="location.href='/add_book';" class="btn btn-primary">Добавить книгу</button>
+</div>
+
+
+<script>
+    function createEditForm(button) {
+        const bookId = button.getAttribute('data-id');
+        fetch(`/edit_book/${bookId}`, {
+            method: 'GET',
+        })
+      .then(response => response.text())
+      .then(data => {
+            // Проверяем, что элемент существует перед установкой innerHTML
+            if (document.getElementById('edit-book-form')) {
+                document.getElementById('edit-book-form').innerHTML = data;
+            } else {
+                console.error("Элемент 'edit-book-form' не найден");
+            }
+        });
+    }
+
+    function deleteBook(bookId) {
+        if (confirm('Вы уверены, что хотите удалить эту книгу?')) {
+            fetch(`/delete_book/${bookId}`, {
+                method: 'DELETE',
+            })
+          .then(() => window.location.reload());
+        }
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,1106 @@
+@import 'variables.css';
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+	background-image: url("/static/images/bg.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+main {
+    flex: 1;
+}
+
+/* ФОРМА НАЧАЛО */
+/* Форма входа */
+form {
+	display: flex;
+    background-color: #f9f9f9;
+    padding: 20px;
+    max-width: 400px;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 2px rgba(0,0,0,0.25);
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.cart-form {
+	background-color: #f9f9f9;
+    padding: 20px;
+    max-width: 150px;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 2px rgba(0,0,0,0.25);
+}
+
+.cart-form_del {
+	background-color: #f9f9f9;
+    padding: 20px;
+    max-width: 140px;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 3px rgba(0,0,0,0.25);
+}
+
+.cart-form_add {
+	background-color: #f9f9f9;
+    padding: 20px;
+    max-width: 220px;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 4px rgba(0,0,0,0.25);
+}
+
+.container {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button,.buy-button, input[value="Регистрация"] {
+    margin-top: 5px;
+    background-color: #007bff;
+    color: var(--text-color-white);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover,.buy-button:hover {
+    background-color: #0056b3;
+}
+
+.reg a {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--text-color-black);
+    text-decoration: none;
+}
+
+.reg a:hover {
+    text-decoration: underline;
+}
+/* ФОРМА КОНЕЦ */
+
+/* АДМИН ТАБЛИЦА */
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.admin_table {
+    width: 60%; /* Ширина таблицы */
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+.admin_table img {
+    width: 100px;
+    height: 100px;
+}
+
+.admin_table th,
+.admin_table td {
+    padding: 10px; /* Отступы внутри ячеек */
+    text-align: left; /* Выравнивание текста по левому краю */
+    border-bottom: 1px solid #ddd;
+    color: var(--text-color-black);
+}
+
+.admin_table tr:hover {
+    background-color: #acacac;
+}
+
+.admin_table th {
+    background-color: #bdbdbd; /* Цвет фона для заголовков */
+}
+
+/* Стили для формы в админ панели */
+.admin_table form {
+    display: flex;
+    justify-content: center; /* Центрирование содержимого формы */
+    align-items: center; /* Выравнивание по вертикали */
+    gap: 10px; /* Расстояние между элементами формы */
+}
+
+.admin_table select {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.admin_table button {
+    background-color: #007bff;
+    color: var(--text-color-white);
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admin_table button:hover {
+    background-color: #0056b3;
+}
+
+/* БОКСЫ И КНОПКИ */
+
+.books-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-grow: 1;
+}
+
+.genre-column {
+    flex-basis: 200px; /* Задаем фиксированную ширину для колонки жанров */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.genre-column h3 {
+    margin-top: 0;
+}
+
+.genre-column ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.genre-column ul li {
+    overflow-wrap: break-word; /* Перенос слов на новую строку */
+}
+
+.book-items {
+    display: flex;
+    flex-wrap: wrap; /* Разрешает элементам переноситься на новую строку */
+    justify-content: center; /* Равномерно распределяет элементы по горизонтали */
+	align-items: center;
+    gap: 20px; /* Расстояние между элементами */
+}
+
+.book-item {
+    flex: 0 1 calc(50% - 10px);
+    box-sizing: border-box;
+    padding: 10px; /* Отступы внутри карточки */
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    background-color: white;
+    width: 100%; /* Полная ширина родительского элемента */
+    max-width: 250px; /* Максимальная ширина карточки */
+}
+
+.book-item img {
+    width: 100%;
+    height: auto;
+	border-radius: 5px;
+}
+
+.buy-button:hover {
+    background-color: #0056b3;
+}
+
+.field-description {
+    font-size: 0.8em;
+    color: #666;
+}
+
+ul {
+	margin: 0;
+	padding: 1.4em;
+}
+
+input[name='csrfmiddlewaretoken'] {
+    display: none;
+}
+
+/* Общие стили для сайта */
+.site-container {
+    flex: 1;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-section {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.features-section,.call-to-action-section {
+    margin: 40px 0;
+}
+
+.features-section ul {
+    list-style-position: inside;
+    padding-left: 30px;
+}
+
+.call-to-action-section {
+    background-color: #007bff;
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.call-to-action-section h2 {
+    margin-bottom: 10px;
+}
+
+.about-us-section,
+.contact-section {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.about-us-section p,
+.contact-section p {
+    line-height: 1.6;
+}
+
+.contact-section {
+    margin-top: 60px;
+}
+
+.genre-column {
+    flex-basis: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    border-right: 1px solid #eee;
+    background-color: #f9f9f9;
+	width: auto;
+}
+
+.genre-column h3 {
+    margin-top: 0;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.genre-column ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.genre-column ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.genre-column ul li:last-child {
+    border-bottom: none;
+}
+
+.genre-column ul li a {
+    color: #007bff;
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
+    transition: background-color 0.3s ease;
+	transition: color 0.3s ease;
+}
+
+.genre-column ul li a:hover {
+    background-color: #f8f8f8;
+    color: #333;
+	border-radius: 2px;
+}
+
+.book-detail {
+    max-width: 800px; /* Максимальная ширина контента */
+    margin: 20px auto; /* Центрирование и отступы */
+    padding: 20px; /* Отступы внутри контейнера */
+    background-color: #f1f1f1; /* Белый фон */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.book-cover {
+    width: 100%; /* Ширина изображения */
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Отступ под изображение */
+}
+
+.book-info p {
+    margin-bottom: 10px; /* Отступы под абзацами */
+    line-height: 1.5; /* Увеличение межстрочного расстояния */
+    font-size: 0.9em; /* Уменьшение размера текста */
+	word-wrap: break-word;
+}
+
+.actions {
+    margin-top: 20px; /* Отступ сверху для разделителя */
+}
+
+.actions form {
+    display: flex; /* Расположение элементов формы в ряд */
+    gap: 10px; /* Расстояние между элементами формы */
+    align-items: center; /* Выравнивание элементов по вертикали */
+}
+
+.actions button,.actions input[type="submit"] {
+    padding: 10px 20px; /* Отступы вокруг текста кнопки */
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Плавный переход фона */
+}
+
+.actions button:hover,.actions input[type="submit"]:hover {
+    background-color: #0056b3; /* Темнеший синий фон при наведении */
+}
+
+.comments {
+    margin-top: 20px; /* Отступ сверху для разделителя */
+}
+
+.comment {
+    border-bottom: 1px solid #eee; /* Граница под комментарием */
+    padding: 10px 0; /* Отступы вокруг текста комментария */
+    margin-bottom: 10px; /* Отступ под комментарием */
+}
+
+.comment small {
+    float: right; /* Выравнивание времени справа */
+    color: #888;
+}
+
+.profile-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-title {
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.user-details p {
+	font-size: 20px;
+}
+
+.messages {
+    margin-bottom: 20px;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    color: #555;
+}
+
+.edit-btn,
+.logout-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.edit-btn {
+    background-color: #007bff;
+    border: 1px solid #007bff;
+}
+
+.logout-btn {
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+
+
+.cart-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow-x: auto; /* Добавим прокрутку по горизонтали, если содержимое слишком широкое */
+}
+
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse; /* Убираем двойные границы ячеек */
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+.cart-table th {
+	padding: 15px;
+    text-align: center;
+    border: 3px solid #000000;
+    background-color: #f9f9f9;
+}
+/* Выделение каждой ячейки и выравнивание содержимого по центру */
+.cart-table td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #000000;
+    background-color: #f9f9f9;
+}
+/* Усиленное выделение названий столбцов */
+.cart-table th {
+    background-color: #e0e0e0;
+    font-weight: bold;
+    color: #333;
+}
+
+.cart-table tr:nth-child(even) {
+    background-color: #f7f7f7;
+}	
+
+.cart-table button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.cart-table button:hover {
+    background-color: #0056b3;
+}
+
+#checkout-form input[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#checkout-form input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.total-cost {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.continue-shopping {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.continue-shopping:hover {
+    background-color: #0056b3;
+}
+
+
+
+.admin-header {
+    background-color: #333;
+    color: white;
+}
+
+.content-wrapper {
+    max-width: auto; /* Максимальная ширина контента */
+    margin: auto;
+    padding: 20px;
+}
+
+
+.table {
+    width: 100%; /* Таблица занимает всю ширину родительского элемента */
+    border-collapse: collapse; /* Убираем двойные границы ячеек */
+    margin-top: 20px; /* Отступ сверху от таблицы */
+}
+
+.table th,
+.table td {
+    padding: 8px; /* Отступы внутри ячеек */
+    text-align: left; /* Выравнивание текста по левому краю */
+    border: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Цвет фона для четных строк */
+}
+
+.delete-author-form input[type="submit"] {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-author-form input[type="submit"]:hover {
+    background-color: #c82333;
+}
+
+.center {
+    text-align: center;
+}
+
+.admin_table {
+    width: 100%; /* Таблица занимает всю ширину родителя */
+    border-collapse: collapse; /* Убираем двойные границы ячеек */
+    margin-top: 20px; /* Отступ сверху от таблицы */
+}
+
+.admin_table th,
+.admin_table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.admin_table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.admin_table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Цвет фона для четных строк */
+}
+
+.admin_table img {
+    width: 50px;
+    height: auto;
+}
+
+.btn {
+    padding: 10px 15px; /* Отступы вокруг текста кнопки */
+    margin: 5px; /* Отступы вокруг кнопки */
+    cursor: pointer;
+    border: none; /* Убираем стандартную рамку */
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.add_book_form {
+    display: grid; /* Использование сетки для размещения элементов формы */
+    grid-template-columns: 1fr; /* Одна колонка для каждого элемента */
+    gap: 10px; /* Отступы между элементами формы */
+    padding: 20px; /* Отступы вокруг формы */
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add_book_form label {
+    display: block; /* Блоковый вывод для меток */
+    margin-bottom: 5px; /* Отступ под метками */
+}
+
+.add_book_form input[type="text"],
+.add_book_form textarea,
+.add_book_form input[type="date"],
+.add_book_form input[type="number"],
+.add_book_form select {
+    width: 100%; /* Полная ширина родителя */
+    padding: 10px; /* Отступы вокруг текстовых полей */
+    border: 1px solid #ccc; /* Граница текстовых полей */
+    border-radius: 4px;
+}
+
+.add_book_form input[type="file"] {
+    display: inline-block; /* Расположение рядом с меткой */
+    vertical-align: middle; /* Выравнивание по вертикали */
+}
+
+.add_book_form button {
+    padding: 10px 20px; /* Отступы вокруг текста кнопки */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add_book_form button:hover {
+    background-color: #0056b3;
+}
+
+.edit_book_form {
+    display: grid; /* Использование сетки для размещения элементов формы */
+    grid-template-columns: 1fr; /* Одна колонка для каждого элемента */
+    gap: 10px; /* Отступы между элементами формы */
+    padding: 20px; /* Отступы вокруг формы */
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.edit_book_form label {
+    display: block; /* Блоковый вывод для меток */
+    margin-bottom: 5px; /* Отступ под метками */
+}
+
+.edit_book_form input[type="text"],
+.edit_book_form textarea,
+.edit_book_form input[type="date"],
+.edit_book_form input[type="number"],
+.edit_book_form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.edit_book_form input[type="file"] {
+    display: inline-block; /* Расположение рядом с меткой */
+    vertical-align: middle; /* Выравнивание по вертикали */
+}
+
+.edit_book_form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit_book_form button:hover {
+    background-color: #0056b3;
+}
+
+/* Стилизация формы редактирования комментария */
+.edit-comment-form {
+    display: flex;
+    flex-direction: column; /* Ставим направление элементов в столбец */
+    align-items: center; /* Центрируем элементы по горизонтали */
+    gap: 10px; /* Отступы между элементами формы */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Стилизация текстового поля */
+.edit-comment-form textarea {
+    width: 100%;
+    padding: 10px; /* Отступы вокруг текста */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none; /* Запрещаем изменение размера текстового поля */
+}
+
+/* Стилизация кнопки отправки */
+.edit-comment-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-comment-form button:hover {
+    background-color: #0056b3;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+
+.edit_genre {
+	display: flex;
+	flex-direction: column;
+}
+
+.groups-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.groups-title {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.group-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.group-item {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.group-item h3 {
+    margin-top: 0;
+    color: #444;
+    font-size: 18px;
+}
+
+.group-item p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.group-item a {
+    display: inline-block;
+    color: #007bff;
+    text-decoration: none;
+    border: 1px solid #007bff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.group-item a:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.login-form.container {
+	display: flex;
+	flex-direction: row;
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .admin_table {
+        width: 100%; /* Таблица занимает всю ширину экрана */
+    }
+
+   .admin_table th:nth-child(n+7),
+   .admin_table td:nth-child(n+7) {
+        display: none; /* Скрываем столбцы начиная с 7-го */
+    }
+
+   .admin_table th[scope="col"]:after,
+   .admin_table td[scope="row"]:after {
+        content: ""; /* Убираем маркеры для скрытых столбцов */
+    }
+
+   .btn {
+        width: 100%;
+    }
+}
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .admin_table {
+        width: 90%;
+    }
+}
+
+@media (min-width: 1025px) {
+  .admin_table {
+        width: 75%;
+    }
+}
+
+@media (max-width: 768px) {
+   .profile-container {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 1024px) {
+.site-container {
+		padding: 0 10px;
+	}
+
+.hero-section {
+		padding: 30px 0;
+	}
+
+.features-section,.call-to-action-section {
+		margin: 20px 0;
+	}
+
+.admin_table {
+		width: 95%;
+	}
+
+.content-wrapper {
+		flex-direction: column;
+	}
+
+.genre-column {
+		order: -1;
+	}
+
+.book-items {
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	}
+
+.buy-button {
+		margin-top: 5px;
+	}
+}
+
+@media (max-width: 768px) {
+	header {
+		padding: 10px 15px;
+	}
+
+.mainmenu {
+		flex-direction: column;
+	}
+
+.mainmenu li {
+		margin-bottom: 10px;
+	}
+
+.dropdown-content {
+		min-width: 150px;
+	}
+
+.search-container {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+.search-container h1 {
+		margin-bottom: 5px;
+	}
+
+.books-layout {
+		flex-direction: column;
+	}
+
+.genre-column {
+		flex-basis: 100%;
+	}
+
+.book-item {
+		max-width: 90%;
+	}
+
+.field-description {
+		font-size: 0.7em;
+	}
+}
+
+@media (max-width: 480px) {
+.site-container {
+		padding: 0 5px;
+	}
+
+.hero-section {
+		padding: 20px 0;
+	}
+
+.features-section,.call-to-action-section {
+		margin: 10px 0;
+	}
+
+.admin_table {
+		width: 90%;
+	}
+
+.genre-column {
+		order: 0;
+	}
+
+.book-items {
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	}
+
+.buy-button {
+		margin-top: 3px;
+	}
+}
+
+@media (max-width: 768px) {
+.cart-table {
+		font-size: 12px;
+	}
+
+.cart-table th,.cart-table td {
+		padding: 10px;
+	}
+
+.cart-table tr:nth-child(even) {
+		background-color: #f9f9f9;
+	}
+}
+
+@media (max-width: 768px) {
+.admin_table {
+		width: 100%;
+	}
+
+	table, thead, tbody, th, td, tr {
+		display: block; /* Изменяем структуру таблицы для блокового представления */
+	}
+
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	tr { margin: 0 0 1rem 0; }
+
+	tr:nth-of-type(odd) {
+		background: #ccc;
+	}
+
+	td {
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+
+	td:before {
+		position: absolute;
+		top: 0;
+		left: 6px;
+		width: 45%; /* Занимаемая ширина для метки */
+		padding-right: 10px; /* Отступ справа для разделения метки и значения */
+		white-space: nowrap;
+	}
+}
+ 
+@media (min-width: 769px) and (max-width: 1024px) {
+.admin_table {
+		width: 80%;
+	}
+}
+
+@media (min-width: 1025px) {
+.admin_table {
+		width: 60%; 
+	}
+}

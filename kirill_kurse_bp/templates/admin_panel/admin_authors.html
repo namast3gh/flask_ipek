@@ -1,0 +1,74 @@
+{% extends 'admin_header.html' %}
+
+{% block content %}
+<h2>Управление авторами</h2>
+
+<div class="center">
+<table class="admin_table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for author in authors %}
+        <tr>
+            <td>{{ author.id }}</td>
+            <td>{{ author.name }}</td>
+            <td>
+                <form action="{{ url_for('edit_author', author_id=author.id) }}" method="post">
+                    <input type="hidden" name="id" value="{{ author.id }}">
+                    <input type="text" name="name" value="{{ author.name }}" required>
+                    <button type="submit">Изменить</button>
+                </form>
+                <form class="delete-author-form" action="{{ url_for('delete_author', author_id=author.id) }}" method="post">
+					<input type="hidden" name="_method" value="DELETE">
+					<input type="submit" value="Удалить" class="btn btn-danger">
+				</form>
+				
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</div>
+<!-- Форма для добавления нового автора -->
+<form id="add-author-form" action="{{ url_for('admin_authors') }}" method="post">
+    <label for="new-name">Добавить нового автора</label>
+    <input type="text" id="new-name" name="name" required>
+    <button type="submit">Добавить</button>
+</form>
+
+<script>
+	document.querySelectorAll('.delete-author-form').forEach(function(form) {
+		form.addEventListener('submit', function(event) {
+			event.preventDefault();
+			var formData = new FormData(form);
+			fetch(form.action, {
+				method: 'POST',
+				body: formData
+			})
+		   .then(response => response.json())
+		   .then(data => {
+				if (data.message) {
+					alert(data.message); // Отображаем сообщение об успехе
+					// Удаляем строку таблицы, соответствующую удаленному автору
+					this.closest('tr').remove();
+				} else {
+					alert('Ошибка при удалении автора.'); // Обработка ошибки
+				}
+			})
+		   .catch(error => {
+				console.error('Ошибка:', error);
+			});
+		});
+	});
+	</script>
+	
+
+
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'header.html' %}
+
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+      {% for category, message in messages %}
+         <div class="flash-message {{ category }}">
+             {{ message }}
+         </div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+<div class="site-container">
+    <div class="hero-section">
+        <h1>Добро пожаловать на наш сайт!</h1>
+        <p>Здесь вы найдете все необходимые ресурсы и информацию.</p>
+    </div>
+    
+    <div class="features-section">
+        <h2>Основные возможности:</h2>
+        <ul>
+            <li>Авторизация и регистрация пользователей</li>
+            <li>Информация о книгах, авторах и жанрах</li>
+            <li>Комментарии к книгам</li>
+            <li>Оценка книг</li>
+        </ul>
+    </div>
+
+    <div class="about-us-section">
+        <h2>О нас</h2>
+        <p>Наш сайт предлагает обширную коллекцию книг, где каждый найдет что-то по своему вкусу. Мы стремимся создать сообщество любителей чтения, где каждый может делиться своими впечатлениями и советами.</p>
+    </div>
+
+    <div class="contact-section">
+        <h2>Контакты</h2>
+        <p>Вы можете связаться с нами по адресу: ул. Сабурова, дом 24, кв. 54, город Ижевск, Россия</p>
+        <p>Телефон: +7 (950) 164-07-36</p>
+        <p>Email: genger1356@mail.ru</p>
+		<a href="#"><img src="{{ url_for('static', filename='images/vk.png') }}"></a>
+    </div>
+
+    <div class="call-to-action-section">
+        <h2>Не упустите возможность:</h2>
+        <p>Читайте книги в нашей библиотеке, оставьте отзывы и оценки.</p>
+    </div>
+</div>
+{% endblock %}

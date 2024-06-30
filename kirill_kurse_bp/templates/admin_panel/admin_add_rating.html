@@ -1,0 +1,19 @@
+{% extends 'admin_header.html' %}
+
+{% block content %}
+<div class="center"><h2>Добавление оценки</h2></div>
+
+<form class="edit_genre" action="/add_rating" method="post">
+    <label for="book_id">Выберите книгу:</label>
+    <select id="book_id" name="book_id">
+        {% for book in books %}
+        <option value="{{ book.id }}">{{ book.title }}</option>
+        {% endfor %}
+    </select>
+    
+    <label for="rating">Оценка:</label>
+    <input type="number" id="rating" name="rating" min="1" max="5" required>
+    
+    <button type="submit">Добавить оценку</button>
+</form>
+{% endblock %}

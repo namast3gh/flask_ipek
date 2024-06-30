@@ -1,0 +1,33 @@
+{% extends 'admin_header.html' %}
+
+{% block content %}
+<div class="center">
+	<h1>Список групп</h1>
+<table class="admin_table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название группы</th>
+            <th>Книга</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for group in groups %}
+        <tr>
+            <td>{{ group.id }}</td>
+            <td>{{ group.title }}</td>
+            <td>{{ group.book.title }}</td>
+            <td>
+                <form action="/delete_group/{{ group.id }}" method="post">
+                    <button type="submit" class="btn btn-danger">Удалить</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="/add_group" class="btn btn-success">Добавить группу</a>
+</div>
+
+{% endblock %}

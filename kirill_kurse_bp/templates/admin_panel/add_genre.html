@@ -1,0 +1,13 @@
+{% extends 'admin_header.html' %}
+
+{% block content %}
+<div class="center"><h2>Добавление нового жанра</h2></div>
+
+<form class="edit_genre" action="/add_genre" method="post">
+    <div class="mb-3">
+        <label for="title" class="form-label">Название жанра</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+</form>
+{% endblock %}

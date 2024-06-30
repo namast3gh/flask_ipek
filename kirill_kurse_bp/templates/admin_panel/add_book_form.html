@@ -1,0 +1,42 @@
+{% extends 'admin_header.html' %}
+
+{% block content %}
+<div class="center"><h2>Добавление новой книги</h2></div>
+
+
+<form class="add_book_form" action="/add_book" method="post" enctype="multipart/form-data">
+    <label for="title">Название:</label>
+    <input type="text" id="title" name="title" required>
+    
+    <label for="description">Описание:</label>
+    <textarea id="description" name="description" rows="4" required></textarea>
+    
+    <label for="date">Дата:</label>
+    <input type="date" id="date" name="date" required>
+    
+    <label for="pages">Количество страниц:</label>
+    <input type="number" id="pages" name="pages" min="1" required>
+    
+    <label for="price">Цена:</label>
+    <input type="number" id="price" name="price" step="0.01" required>
+    
+    <label for="genre">Жанр:</label>
+    <select id="genre" name="genre" required>
+        {% for genre in genres %}
+        <option value="{{ genre.id }}">{{ genre.title }}</option>
+        {% endfor %}
+    </select>
+    
+    <label for="author">Автор:</label>
+    <select id="author" name="author" required>
+        {% for author in authors %}
+        <option value="{{ author.id }}">{{ author.name }}</option>
+        {% endfor %}
+    </select>
+    
+    <label for="photo">Загрузить фото:</label>
+    <input type="file" id="photo" name="photo">
+    
+    <button type="submit">Добавить книгу</button>
+</form>
+{% endblock %}

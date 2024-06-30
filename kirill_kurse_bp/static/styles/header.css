@@ -1,0 +1,311 @@
+@import 'variables.css';
+* {
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #8b8585;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+	font-size: 16px;
+}
+
+
+.logo {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+	padding-right: 20px;
+}
+
+
+.mainmenu {
+	list-style-type: none;
+    display: flex;
+	flex-wrap: wrap;
+}
+
+.mainmenu li {
+    margin-right: 10px;
+    max-width: 1000px; /* Максимальная ширина для элементов меню */
+}
+
+.dropbtn:hover {
+    background-color: #0359b4;
+	transition: 0.3s;
+}
+
+.dropbtn {
+    background-color: #007BFF;
+    color: white;
+	padding: 1em;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+	border-radius: 6.5px;
+}
+
+.dropbtn_admin {
+    background-color: #007BFF;
+    color: white;
+	padding: 1em;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+	border-radius: 6.5px;
+}
+
+.dropbtn_admin:hover {
+    background-color: #0359b4;
+	transition: 0.3s;
+}
+
+a {
+	text-decoration: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+	margin-left: 1em;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+img {
+	max-width: 75px;
+	max-height: 75px;
+}
+.dropdown-content a:hover {background-color: #d3d3d3;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: #0359b4;}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Отступ между названием библиотеки и формой поиска */
+}
+
+.search-container h1 {
+    margin: 0;
+}
+
+/* Применяем автоматический левый отступ для формы поиска, чтобы она была выровнена по правому краю */
+.search-container form {
+    margin-left: auto; /* Выравнивание формы поиска по правому краю */
+    display: flex;
+    gap: 10px; /* Расстояние между элементами внутри формы */
+}
+
+.search-container form input[type="text"] {
+    padding: 5px; /* Поля для ввода текста */
+    border: 1px solid #ccc; /* Граница поля ввода */
+    border-radius: 3px;
+	border: 2px solid #007bff;
+}
+
+.search-container button {
+    padding: 10px 20px; /* Увеличение размеров кнопки */
+    background-color: #007bff; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Эффект плавного изменения цвета при наведении */
+}
+
+.search-container button:hover {
+    background-color: #0056b3;
+}
+
+.search-inputs {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: flex-end; /* Выравнивает содержимое по правому краю */
+}
+
+/* Стили для модального окна */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Стили для содержимого модального окна */
+.modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    width: 90%;
+    max-width: 500px;
+    margin: 15% auto;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+/* Анимация для эффекта появления */
+.modal-content.show {
+    transform: translateY(-50%);
+}
+
+/* Стили для кнопки закрытия */
+.close-modal {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+.admin-nav {
+	background-color: #007bff;
+	padding: 10px;
+	margin-bottom: 20px;
+	align-items: center;
+}
+/* Стили для ссылок внутри модального окна */
+.admin-nav ul li a {
+    display: flex;
+    text-decoration: none;
+    color: white;
+}
+
+.admin-nav ul li a:hover {
+    background-color: #0056b3;
+}
+
+/* Стили для заголовка модального окна */
+.modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Стилы для предотвращения прокрутки основного контента */
+.modal-open {
+    overflow: hidden;
+}
+/* Централизация заголовка модального окна */
+.centered-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Изменение цвета крестика закрытия на белый */
+.close-modal {
+    color: white;
+}
+
+@media (max-width: 768px) {
+   .modal-content {
+        width: 95%;
+        max-width: 400px;
+    }
+}
+
+
+
+
+
+
+
+
+/* Ваши существующие стили... */
+
+/* Адаптивность */
+@media (max-width: 768px) {
+	.logo img {
+		 max-width: 50px; /* Уменьшаем размер логотипа */
+	 }
+ 
+	.mainmenu {
+		 flex-direction: column;
+	 }
+ 
+	.mainmenu li {
+		 margin-bottom: 10px;
+		 max-width: 100px;
+	 }
+ 
+	.dropdown-content {
+		 min-width: 130px;
+	 }
+ 
+	.search-container h1 {
+		 font-size: 14px;
+		 white-space: nowrap; /* Запрещаем перенос текста на новую строку */
+		 display: none; /* Скрытие надписи "Пенатушево" */
+	 }
+ }
+
+ @media (max-width: 1061px) {
+	.dropbtn {
+		 padding: 0.5em; /* Новый цвет фона при уменьшении разрешения */
+	 }
+ }
+ @media (max-width: 997px) {
+	.dropbtn {
+		 padding: 0.2em; /* Новый цвет фона при уменьшении разрешения */
+	 }
+ }
+ @media (max-width: 768px) {
+	.dropbtn {
+		 padding: 0.3em; /* Новый цвет фона при уменьшении разрешения */
+	 }
+ }
+
+ @media (max-width: 1433px) {
+	.dropbtn_admin {
+		 padding: 0.8em; /* Новый цвет фона при уменьшении разрешения */
+	 }
+ }
+ @media (max-width: 1388px) {
+	.dropbtn_admin {
+		 padding: 0.6em; /* Новый цвет фона при уменьшении разрешения */
+	 }
+ }
+ @media (max-width: 1342px) {
+	.dropbtn_admin {
+		 padding: 0.5em; /* Новый цвет фона при уменьшении разрешения */
+	 }
+ }

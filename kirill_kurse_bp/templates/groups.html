@@ -1,0 +1,21 @@
+{% extends 'header.html' %}
+
+{% block content %}
+<div class="books-layout">
+	<div class="groups-container">
+		<h2 class="groups-title">Подборки книг</h2>
+		<ul class="group-list">
+			{% for group in groups %}
+			<li class="group-item">
+				<h3>{{ group.title }}</h3>
+				<p>Книга: {{ group.book.title }}</p>
+				<p>Автор: {{ group.book.author.name }}</p>
+				<p>Жанр: {{ group.book.genre.title }}</p>
+				<a href="/detail/{{ group.book.id }}">Подробнее</a>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+
+{% endblock %}

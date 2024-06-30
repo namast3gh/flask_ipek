@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link type="text/css" href="{{ url_for('static', filename='styles/header.css')}}" rel="stylesheet" />
+    <link type="text/css" href="{{ url_for('static', filename='styles/main.css')}}" rel="stylesheet" />
+    <link type="text/css" href="{{ url_for('static', filename='styles/footer.css')}}" rel="stylesheet" />
+    <link type="text/css" href="{{ url_for('static', filename='styles/flash_messages.css')}}" rel="stylesheet" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js" integrity="sha256-sw0iNNXmOJbQhYFuC9OF2kOlD5KQKe1y5lfBn4C9Sjg=" crossorigin="anonymous"></script>
+    <title>{{title}}</title>
+</head>
+<body>
+
+<header>
+	<div class="logo">
+        <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="Логотип"></a>
+        <nav>
+            <ul class="mainmenu">
+                <li><a href="{{ url_for('index') }}" class="dropbtn">Главная</a></li>
+				<li><a href="{{ url_for('show_books') }}" class="dropbtn">Каталог</a></li>
+				<li><a href="{{ url_for('view_cart') }}" class="dropbtn">Корзина</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Новая секция для названия библиотеки и строки поиска -->
+    <div class="search-container">
+		
+		<form action="/search" method="get">
+			<div class="search-inputs">
+				<h1>DigitalHome</h1>
+				<input type="text" name="query" placeholder="Поиск...">
+				<button type="submit" class="search-button hidden">Найти</button>
+			</div>
+		</form>
+	</div>
+	
+    
+    {% if current_user.is_authenticated %}
+    <div class="dropdown">
+        <button class="dropbtn">{{ current_user.email }}</button>
+        <div class="dropdown-content">
+			{% if current_user.id_role == 1 %}
+                <a href="{{ url_for('admin_table') }}">Админ панель</a>
+            {% endif %}
+            <a href="{{ url_for('profile') }}">Профиль</a>
+            {% if current_user.is_authenticated and current_user.id_role == 1 %}
+			<a href="{{ url_for('upload_excel') }}">Выгрузка exel</a>
+			{% endif %}
+            <a href="{{ url_for('logout') }}">Выйти</a>
+        </div>
+    </div>
+    {% else %}
+    <div class="dropdown">
+        <button class="dropbtn">Авторизация</button>
+        <div class="dropdown-content">
+            <a href="{{ url_for('login') }}">Войти</a>
+            <a href="{{ url_for('register') }}">Регистрация</a>
+			
+        </div>
+    </div>
+    {% endif %}
+
+</header>
+<main>
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <p>&copy; 2024 DigitalHome</p>
+        <ul class="socials">
+            <li><a href="#"><img style="filter: invert(100%); width: 40px;" src="{{ url_for('static', filename='images/vk.png') }}"></a></li>
+        </ul>
+        <ul class="contact-info">
+            <li>Почта: genger1356@mail.ru</li>
+            <li>Телефон: +7 (950) 164-07-36</li>
+        </ul>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Главная</a></li>
+                <li><a href="{{ url_for('index') }}">О нас</a></li>
+                <li><a href="{{ url_for('index') }}">Контакты</a></li>
+            </ul>
+        </nav>
+    </div>
+</footer>
+
+
+</body>
+	
+</html>

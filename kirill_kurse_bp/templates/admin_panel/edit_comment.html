@@ -1,0 +1,11 @@
+{% extends 'admin_header.html' %}
+
+{% block content %}
+
+<div class="center"><h2>Редактирование комментария</h2></div>
+
+<form class="edit-comment-form" action="{{ url_for('edit_comment', comment_id=comment.id) }}" method="post">
+    <textarea name="text">{{ comment.text }}</textarea>
+    <button type="submit">Сохранить изменения</button>
+</form>
+{% endblock %}

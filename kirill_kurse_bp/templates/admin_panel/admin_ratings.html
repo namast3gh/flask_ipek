@@ -1,0 +1,31 @@
+{% extends 'admin_header.html' %}
+
+{% block content %}
+<div class="center">
+	<h2>Рейтинг книг</h2>
+<table class="admin_table">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Оценка</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for rating in books_with_ratings %}
+        <tr>
+            <td>{{ rating.book.title }}</td>
+            <td>{{ rating.rating }}</td>
+            <td><!-- Форма для удаления оценки -->
+				<form class="cart-form_del" action="{{ url_for('delete_rating', rating_id=rating.id) }}" method="POST">
+					<input type="hidden" name="_method" value="DELETE">
+					<button type="submit" class="btn btn-danger">Удалить</button>
+				</form>
+			</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="/add_rating" class="btn btn-primary">Добавить оценку</a>
+</div>
+{% endblock %}

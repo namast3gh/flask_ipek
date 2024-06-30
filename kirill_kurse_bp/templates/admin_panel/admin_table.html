@@ -1,0 +1,53 @@
+{% extends 'admin_header.html' %}
+
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+      {% for category, message in messages %}
+         <div class="flash-messages {{ category }}">
+             {{ message }}
+         </div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+<h1 class="center">Список пользователей</h1>
+<div class="center">
+    <table class="admin_table">
+        <tr>
+            <th>ID</th>
+            <th>Почта</th>
+            <th>Пароль</th>
+            <th>Роль</th>
+            <th>Админ.возможности</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.password}}</td>
+            <td>{{user.id_role}}</td>
+            <td>
+                <form action="" method="post">
+                    <input type="hidden" name="user_id" value="{{user.id}}">
+                    <input type="email" name="email" value="{{user.email}}">
+                    <select name="id_role">
+                        {% for role in roles %}
+                        <option value="{{role.id}}" {% if role.id == user.id_role %} selected {% endif %}>
+                            {{role.name}}
+                        </option>
+                        {% endfor %}
+                    </select>
+
+                    <button type="submit" value="Обновить">Обновить</button>
+                </form>
+				<form action="{{ url_for('delete_user', user_id=user.id) }}" method="post">
+					<button type="submit">Удалить</button>
+				</form>				
+            </td>
+			
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

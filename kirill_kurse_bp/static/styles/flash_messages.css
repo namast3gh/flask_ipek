@@ -1,0 +1,25 @@
+@import 'variables.css';
+
+.flash-messages {
+	margin-bottom: 10px;
+	padding: 15px;
+	background-color: #f44336;
+	color: white;
+	border-radius: 0 0 7px 7px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.flash-messages.success {
+	background-color: #4CAF50;
+}
+
+.flash-messages.error {
+	background-color: #f44336;
+}
+
+@media (max-width: 600px) {
+	.flash-messages {
+		 padding: 10px;
+	 }
+ }
+ 

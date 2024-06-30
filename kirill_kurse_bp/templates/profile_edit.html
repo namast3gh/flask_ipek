@@ -1,0 +1,21 @@
+{% extends 'header.html' %}
+
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+      {% for category, message in messages %}
+         <div class="flash-messages {{ category }}">
+             {{ message }}
+         </div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+
+<form method="POST" action="{{ url_for('update_username') }}">
+    <div>
+        <label for="new_username">Новое имя пользователя:</label>
+        <input type="text" id="new_username" name="new_username" value="{{ current_user.username }}" required>
+    </div>
+    <button type="submit">Сохранить изменения</button>
+</form>
+{% endblock %}
